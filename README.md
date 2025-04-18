@@ -1,4 +1,4 @@
-# Bootcamp #01 Qualiters Club
+# Bootcamp #01  
 Teste de API Rest do manual a CI/CD  
 
 ## O que é  
