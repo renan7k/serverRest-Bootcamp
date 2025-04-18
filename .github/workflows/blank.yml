@@ -13,6 +13,9 @@ jobs:
 
       - name: Clear npm cache
         run: npm cache clean --force
+
+      - name: Clean GitHub Actions cache
+        run: rm -rf ~/.cache
       
       - name: Create dir for report
         run: mkdir newman
@@ -35,7 +38,7 @@ jobs:
         run: ls -al newman  # Verificando o conteúdo da pasta "newman"
     
       - name: Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2.3.0
         with:
           name: Reports
           path: newman
