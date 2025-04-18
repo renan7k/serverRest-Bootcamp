@@ -10,13 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses:  actions/checkout@v3
+
+      - name: Clear npm cache
+        run: npm cache clean --force
       
       - name: Create dir for report
-        run: | 
-          mkdir testArtifacts
+        run: mkdir testArtifacts
+          
       #Config environement
       - name: Install Node
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
       - name: Instal Newman
         run: |
@@ -27,7 +32,7 @@ jobs:
         run: newman run serverest.postman_collection.json -e ServeRest.postman_environment.json --reporters cli,html
 
       - name: Report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Reports
           path: newman
