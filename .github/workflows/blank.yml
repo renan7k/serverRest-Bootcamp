@@ -29,10 +29,4 @@ jobs:
           npm install -g newman-reporter-htmlextra
 
       - name: Run Test
-        run: newman run serverest.postman_collection.json -e ServeRest.postman_environment.json --reporters cli,html
-
-      - name: Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: Reports
-          path: newman
+        run: newman run serverest.postman_collection.json -e ServeRest.postman_environment.json --reporters cli,htmlextra
