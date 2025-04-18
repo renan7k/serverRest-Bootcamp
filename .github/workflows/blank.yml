@@ -15,7 +15,7 @@ jobs:
         run: npm cache clean --force
       
       - name: Create dir for report
-        run: mkdir testArtifacts
+        run: mkdir newman
           
       #Config environement
       - name: Install Node
@@ -29,4 +29,10 @@ jobs:
           npm install -g newman-reporter-htmlextra
 
       - name: Run Test
-        run: newman run serverest.postman_collection.json -e ServeRest.postman_environment.json --reporters cli,htmlextra
+        run: newman run serverest.postman_collection.json -e ServeRest.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export newman/report.html
+
+      - name: Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Reports
+          path: newman
