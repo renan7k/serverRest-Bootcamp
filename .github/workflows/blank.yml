@@ -10,12 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses:  actions/checkout@v3
-
-      - name: Clear npm cache
-        run: npm cache clean --force
-
-      - name: Clean GitHub Actions cache
-        run: rm -rf ~/.cache
       
       - name: Create dir for report
         run: mkdir newman
@@ -34,14 +28,10 @@ jobs:
       - name: Run Test
         run: npx newman run serverest.postman_collection.json -e ServeRest.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export newman/report.html
 
-      - name: List files in newman folder
-        run: ls -al newman  # Verificando o conteúdo da pasta "newman"
-    
-      - name: Report
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: Reports
-          path: newman
-
-      - name: List files in newman folder
-        run: ls -al newman  # Listar os arquivos na pasta "newman"
+      # Pendente ajustar a geração do relatório
+      #- name: Report
+      #  uses: actions/upload-artifact@v3.1.2
+      #  with:
+      #    name: Reports
+      #   path: newman 
+      
