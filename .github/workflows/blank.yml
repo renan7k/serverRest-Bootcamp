@@ -38,7 +38,7 @@ jobs:
         run: ls -al newman  # Verificando o conteúdo da pasta "newman"
     
       - name: Report
-        uses: actions/upload-artifact@v2.3.0
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: Reports
           path: newman
