@@ -36,3 +36,6 @@ jobs:
         with:
           name: Reports
           path: newman
+
+      - name: List files in newman folder
+        run: ls -al newman  # Listar os arquivos na pasta "newman"
